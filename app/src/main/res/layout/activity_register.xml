@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+  <LinearLayout
+      android:id="@+id/linearLayout1"
+      android:layout_width="match_parent"
+      android:layout_height="50dp"
+      android:orientation="horizontal">
+
+      <TextView
+          android:layout_width="wrap_content"
+          android:layout_height="match_parent"
+          android:text="이름:"
+          android:gravity="center"
+          android:textSize="20dp"
+          android:layout_weight="1"></TextView>
+
+
+         <EditText
+             android:id="@+id/name"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:hint="이름을 입력하세요"
+             android:layout_weight="2"/>
+  </LinearLayout>
+
+    <Button
+        android:id="@+id/gallery_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/linearLayout1"
+        android:layout_gravity="center"
+        android:layout_marginTop="20dp"
+        android:layout_marginLeft="140dp"
+        android:text="사진 불러오기" />
+
+    <ImageView
+        android:id="@+id/iv_image"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/gallery_button"
+        android:layout_centerInParent="true"/>
+
+
+    <HorizontalScrollView
+        android:id="@+id/hori_scroll_view"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:fillViewport="false"
+        android:layout_below="@+id/gallery_button"
+        android:foregroundGravity="left">
+
+        <LinearLayout
+            android:id="@+id/selected_photos_container"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="left"
+            android:animateLayoutChanges="true"
+            android:gravity="left"
+            android:orientation="horizontal"
+            android:visibility="visible">
+
+            <!-- images will be added dynamicall to this layout -->
+        </LinearLayout>
+    </HorizontalScrollView>
+    <TextView
+        android:id="@+id/tv1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="* 사진은 최소 50장 이상 등록해야합니다.\n사진 개수가 적을 경우, 미등록 상태로 표시됩니다."
+        android:layout_below="@id/iv_image"
+        android:layout_marginTop="160dp"
+        android:layout_marginLeft="50dp"></TextView>
+
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="* 두 명 이상이 같이 나온 사진일 경우, 사진을 불러온 후 \n썸네일을 눌러 크기를 조정해주세요."
+        android:layout_below="@+id/tv1"
+        android:layout_marginTop="15dp"
+        android:layout_marginLeft="50dp"></TextView>
+
+   <LinearLayout
+       android:id="@+id/linearLayout2"
+       android:orientation="horizontal"
+       android:layout_below="@+id/hori_scroll_view"
+       android:layout_width="match_parent"
+       android:layout_height="match_parent">
+
+       <Button
+           android:id="@+id/cancel_button"
+           android:layout_width="wrap_content"
+           android:layout_height="wrap_content"
+           android:layout_gravity="center"
+           android:layout_marginTop="120dp"
+           android:layout_marginLeft="160dp"
+           android:text="취소" />
+    <Button
+        android:id="@+id/confirm_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="120dp"
+        android:layout_marginLeft="20dp"
+        android:text="저장" />
+   </LinearLayout>
+
+
+
+
+</RelativeLayout>
+

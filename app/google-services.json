@@ -1,0 +1,56 @@
+{
+  "project_info": {
+    "project_number": "792235762395",
+    "firebase_url": "https://aicctv-8f5ac.firebaseio.com",
+    "project_id": "aicctv-8f5ac",
+    "storage_bucket": "aicctv-8f5ac.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:792235762395:android:8d1372fb7ebb2a9878a2fe",
+        "android_client_info": {
+          "package_name": "com.example.aicctv"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "792235762395-naobb4rn726oi9a269baq3vd3cs48geu.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.aicctv",
+            "certificate_hash": "5c40d55d2b579bd4625c9d39e83662a7ce271ea6"
+          }
+        },
+        {
+          "client_id": "792235762395-6g5520tm2hhjrpkp7mfvtprkl4s351tq.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.aicctv",
+            "certificate_hash": "5fea7f86901032b884718ba000b637a1cd02652b"
+          }
+        },
+        {
+          "client_id": "792235762395-sjs7jakp6mm56hqiepf8h712sj37gs8k.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA5Vomt6KXx62mMmGo3UTQE8MdLrvEI_nk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "792235762395-sjs7jakp6mm56hqiepf8h712sj37gs8k.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
