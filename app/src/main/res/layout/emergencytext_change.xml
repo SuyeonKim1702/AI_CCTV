@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:layout_marginBottom="30dp"
+        android:layout_weight="2"
+        android:text="긴급 상황에 도움 요청 버튼을 누르면 긴급 연락망에 저장되어 있는 번호로 메세지가 전송됩니다. 기본으로 '위험한 상황에 처했습니다. 도움을 요청합니다'라는 메세지를 전송합니다. 메세지를 수정하고 싶은 경우 아래 입력란을 통해서 수정할 수 있습니다. 위급 상황에 전송될 메세지이므로 직관적인 메세지를 추천합니다."
+        app:layout_constraintBottom_toTopOf="@+id/linearLayout"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <RelativeLayout
+        android:id="@+id/linearLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="150dp"
+        android:orientation="vertical"
+        android:textColor="@android:color/black"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="MissingConstraints">
+
+        <TextView
+            android:id="@+id/emer_text"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="2"
+            android:text="도움 요청 메세지:"
+            android:textColor="@android:color/black"
+            android:textSize="24sp" />
+
+        <EditText
+            android:id="@+id/EmergencyText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/emer_text"
+            android:layout_weight="2"
+            android:hint="위험한 상황에 처했습니다. 도움을 요청합니다."
+            android:textColor="@android:color/black" />
+
+        <Button
+            android:id="@+id/change_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/EmergencyText"
+            android:layout_weight="2"
+            android:background="#FF0000"
+            android:text="수정"
+            android:layout_centerInParent="true"
+            android:textColor="@android:color/white"
+            android:textSize="18sp"
+            android:textStyle="bold" />
+
+    </RelativeLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
