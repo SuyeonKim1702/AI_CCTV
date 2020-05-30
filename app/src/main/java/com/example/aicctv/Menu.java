@@ -1,5 +1,6 @@
 package com.example.aicctv;
 
+import android.app.PendingIntent;
 import android.content.Intent;
 import android.os.Bundle;
 import android.telephony.SmsManager;
@@ -30,13 +31,12 @@ public class Menu extends AppCompatActivity implements View.OnClickListener{
     private FirebaseDatabase firebaseDatabase = FirebaseDatabase.getInstance();
     private DatabaseReference databaseReference = firebaseDatabase.getReference().child("00gpwls00");
 
-    private List list;
+    private ArrayList<String> numlist = new ArrayList<String>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_menu);
-
 
         //firebase의 database를 listview로 표현
         databaseReference.child("Contact_number").addValueEventListener(new ValueEventListener() {
@@ -45,7 +45,7 @@ public class Menu extends AppCompatActivity implements View.OnClickListener{
                 for (DataSnapshot numberData : dataSnapshot.getChildren()) {
                     // child 내에 있는 데이터만큼 반복합니다.
                     String msg2 = (String) numberData.child("number").getValue();
-                    list.add(msg2);
+                    numlist.add(msg2);
                 }
             }
             @Override
@@ -98,13 +98,14 @@ public class Menu extends AppCompatActivity implements View.OnClickListener{
         });
 
         //도움 요청 버튼
+        SmsManager sms = SmsManager.getDefault();
         Button button7 = (Button) findViewById(R.id.Emergency);
         button7.setOnClickListener(new View.OnClickListener(){
 
             public void onClick(View view) {
                 int count = 0;
-                if(list != null) {
-                    count = list.size();
+                if(!numlist.isEmpty()) {
+                    count = numlist.size();
                 }
 
                 Help_messa_change h = new Help_messa_change();
@@ -114,8 +115,9 @@ public class Menu extends AppCompatActivity implements View.OnClickListener{
                     SmsManager smsManager = SmsManager.getDefault();
                     //list에 저장되어 있는 번호들에 모두 메세지 전송
                     for (int i = 0; i <count; i++){
-                        String phoneNum = (String)list.get(i);
-                        smsManager.sendTextMessage(phoneNum, null, help_mes, null, null);
+                        String phoneNum = (String)numlist.get(i);
+                        System.out.println(phoneNum);
+                        sms.sendTextMessage(phoneNum, null, help_mes, null, null);
                     }
                     Toast.makeText(getApplicationContext(), help_mes+"도움 요청 메시지 전송 완료", Toast.LENGTH_LONG).show();
                 } catch (Exception e) {
