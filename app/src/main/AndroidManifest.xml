@@ -5,6 +5,8 @@
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.SEND_SMS" />
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
 
     <application
         android:name="androidx.multidex.MultiDexApplication"
@@ -29,6 +31,7 @@
         <activity android:name=".Video" />
         <activity android:name=".Monitoring" />
         <activity android:name=".Menu" />
+        <activity android:name=".Help_messa_change" />
 
         <activity android:name=".MainActivity">
             <intent-filter>
