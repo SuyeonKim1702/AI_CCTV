@@ -63,6 +63,35 @@
                 android:padding="20dp"
                 android:text="긴급 연락망 관리" />
         </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/visitor"
+                android:layout_width="145dp"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:padding="20dp"
+                android:text="방문자 관리" />
+
+            <Button
+                android:id="@+id/emerText_change"
+                android:layout_width="145dp"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:padding="20dp"
+                android:text="긴급 메세지 수정" />
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/Emergency"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="도움 요청 버튼" />
+
         <LinearLayout
 
             android:layout_width="wrap_content"
