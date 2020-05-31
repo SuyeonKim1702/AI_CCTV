@@ -88,6 +88,15 @@ public class Menu extends AppCompatActivity implements View.OnClickListener{
             }
         });
 
+        //방문자 사진 관리 버튼
+        Button button5 = (Button) findViewById(R.id.visitor);
+        button5.setOnClickListener(new View.OnClickListener(){
+            public void onClick(View view) {
+                Intent visit = new Intent(getApplicationContext(), Visitor.class);
+                startActivity(visit);
+            }
+        });
+
         //긴급 메세지 수정 버튼
         Button button6 = (Button) findViewById(R.id.emerText_change);
         button6.setOnClickListener(new View.OnClickListener(){

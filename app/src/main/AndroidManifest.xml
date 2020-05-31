@@ -31,6 +31,7 @@
         <activity android:name=".Menu" />
         <activity android:name=".Help_messa_change" />
         <activity android:name=".Visitor" />
+        <activity android:name=".Visitor_photo" />
         <activity android:name=".Video" />
         <activity android:name=".Video_each" />
 
