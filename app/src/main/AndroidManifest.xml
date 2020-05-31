@@ -27,11 +27,12 @@
         <activity android:name=".Register" />
         <activity android:name=".Register_2" />
         <activity android:name=".Person" />
-        <activity android:name=".Video" />
         <activity android:name=".Monitoring" />
         <activity android:name=".Menu" />
         <activity android:name=".Help_messa_change" />
         <activity android:name=".Visitor" />
+        <activity android:name=".Video" />
+        <activity android:name=".Video_each" />
 
         <activity android:name=".MainActivity">
             <intent-filter>
