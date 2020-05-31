@@ -31,6 +31,7 @@
         <activity android:name=".Monitoring" />
         <activity android:name=".Menu" />
         <activity android:name=".Help_messa_change" />
+        <activity android:name=".Visitor" />
 
         <activity android:name=".MainActivity">
             <intent-filter>
