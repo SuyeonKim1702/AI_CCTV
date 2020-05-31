@@ -148,7 +148,8 @@ public class Monitoring extends AppCompatActivity {
             @Override
             public void onPrepared(MediaPlayer mp) {
                 dialog.dismiss();
-                textView.setText(target);
+                String datename = target.substring(0,4)+"년 "+target.substring(4,6)+"월 "+target.substring(6,8)+"일 "+target.substring(9,11)+"시 "+target.substring(11,13)+"분 "+target.substring(13,15)+"초";
+                textView.setText(datename);
                 Toast.makeText(com.example.aicctv.Monitoring.this,
                         "동영상이 준비되었습니다.재생을 시작합니다.", Toast.LENGTH_SHORT).show();
                 videoView.seekTo(0);

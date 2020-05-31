@@ -3,7 +3,7 @@ android {
     compileSdkVersion 28
     defaultConfig {
         applicationId "com.example.aicctv"
-        minSdkVersion 16
+        minSdkVersion 21
         targetSdkVersion 28
         multiDexEnabled true
         versionCode 1
