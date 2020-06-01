@@ -67,7 +67,7 @@ public class Video_each extends AppCompatActivity {
     DatabaseReference childreference;
     StorageReference videoRef;
     File localFile;
-    TextView textView;
+    TextView textView, textView2;
     ProgressDialog dialog;
     VideoView videoView;
     String videoname;
@@ -89,6 +89,7 @@ public class Video_each extends AppCompatActivity {
 
         videoView = (VideoView)findViewById(R.id.videoView);
         textView= (TextView)findViewById(R.id.textview);
+        textView2= (TextView)findViewById(R.id.textView2);
         firebaseDatabase=FirebaseDatabase.getInstance();
         childreference=firebaseDatabase.getReference().child("00gpwls00/VideoLink/");
         storage2 = FirebaseStorage.getInstance();
@@ -101,7 +102,10 @@ public class Video_each extends AppCompatActivity {
 
         int index_=name.indexOf("(");
         name_=name.substring(0,index_);
-        textView.setText(name);
+        // textView.setText(name);
+        String datename = name.substring(0,4)+"년 "+name.substring(4,6)+"월 "+name.substring(6,8)+"일 "+name.substring(9,11)+"시 "+name.substring(11,13)+"분 "+name.substring(13,15)+"초";
+        textView.setText(datename);
+        textView2.setText("검출 결과 : "+name.substring(16, name.length()));
         System.out.println(name_+"입니다");
         dialog = ProgressDialog.show(this, "영상 가져오기", "로딩 중 입니다.", true, true);
 
@@ -166,9 +170,11 @@ public class Video_each extends AppCompatActivity {
             @Override
             public void onPrepared(MediaPlayer mp) {
                 dialog.dismiss();
-                textView.setText(target);
+                // textView.setText(target);
+                // String datename = target.substring(0,4)+"년 "+target.substring(4,6)+"월 "+target.substring(6,8)+"일 "+target.substring(9,11)+"시 "+target.substring(11,13)+"분 "+target.substring(13,15)+"초";
+                // textView.setText(datename);
                 Toast.makeText(com.example.aicctv.Video_each.this,
-                        "동영상이 준비되었습니다.재생을 시작합니다.", Toast.LENGTH_SHORT).show();
+                        "동영상이 준비되었습니다. 재생을 시작합니다.", Toast.LENGTH_SHORT).show();
                 videoView.seekTo(0);
                 videoView.start();
                 // deleteVideo();
@@ -184,7 +190,7 @@ public class Video_each extends AppCompatActivity {
             }
             removeDir(videopath); //내부 저장소 내의 파일 모조리 삭제
             videoname=name_+".mp4";
-            System.out.println(videoname+"이이이");
+            System.out.println(videoname);
             localFile = new File(getFilesDir()+"/realtime",videoname);
 
             videoRef.getFile(localFile).addOnSuccessListener(new OnSuccessListener<FileDownloadTask.TaskSnapshot>() {

@@ -24,7 +24,6 @@ public class Video extends AppCompatActivity {
     private ListView list;
     ArrayList<String> listdata;
     ArrayAdapter<String> adapter;
-
     private int selectedPosition;
 
     FirebaseDatabase firebaseDatabase = FirebaseDatabase.getInstance();
@@ -55,7 +54,9 @@ public class Video extends AppCompatActivity {
                 for (DataSnapshot messageData : dataSnapshot.getChildren()) {
                     String message = messageData.getKey();
                     String name = (String) messageData.getValue();
-                    listdata.add(message + "(" + name + ")");
+                    String datename = message.substring(0,4)+"년 "+message.substring(4,6)+"월 "+message.substring(6,8)+"일 "
+                            +message.substring(9,11)+"시 "+message.substring(11,13)+"분 "+message.substring(13,15)+"초";
+                    listdata.add(datename + " (" + name + ")");
                 }
                 adapter.notifyDataSetChanged();
             }
@@ -71,7 +72,13 @@ public class Video extends AppCompatActivity {
     AdapterView.OnItemClickListener listener2= new AdapterView.OnItemClickListener() {
         @Override
         public void onItemClick(AdapterView<?> adapterView, View view, int position, long id) {
-            String selected_item = (String) adapterView.getItemAtPosition(position);
+            String temp = (String) adapterView.getItemAtPosition(position);
+            // 2020년 03월 30일 19시 00분 00초 (혜진)
+            String selected_item = temp.substring(0, 4)+temp.substring(6,8)+temp.substring(10,12)+"_"
+                    +temp.substring(14,16)+temp.substring(18,20)+temp.substring(22,24)
+                    +temp.substring(26,temp.length()-1);
+
+            // String selected_item = (String) adapterView.getItemAtPosition(position);
             Intent intent10 = new Intent(getApplicationContext(), Video_each.class);
             intent10.putExtra("selected_item", selected_item);
             startActivity(intent10);

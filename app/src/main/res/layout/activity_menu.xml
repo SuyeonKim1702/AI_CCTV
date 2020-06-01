@@ -7,93 +7,93 @@
     tools:context=".MainActivity">
 
     <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="50dp"
-        android:layout_marginLeft="50dp"
-        android:layout_marginRight="50dp"
-        android:layout_marginStart="50dp"
+        android:layout_width="341dp"
+        android:layout_height="587dp"
+        android:layout_marginStart="100dp"
+        android:layout_marginEnd="100dp"
         android:orientation="vertical"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.566">
+        app:layout_constraintVertical_bias="0.888">
 
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_gravity="center"
             android:orientation="horizontal">
 
             <Button
                 android:id="@+id/monitoring"
-                android:layout_width="145dp"
-                android:layout_height="wrap_content"
-                android:layout_margin="5dp"
-                android:padding="20dp"
-                android:text="실시간 모니터링" />
+                android:layout_width="80dp"
+                android:layout_height="80dp"
+                android:layout_margin="20dp"
+                android:background="@drawable/monitoring"
+                android:padding="20dp" />
 
             <Button
                 android:id="@+id/video"
-                android:layout_width="145dp"
-                android:layout_height="wrap_content"
-                android:layout_margin="5dp"
-                android:padding="20dp"
-                android:text="녹화 화면 시청" />
+                android:layout_width="80dp"
+                android:layout_height="80dp"
+                android:layout_margin="20dp"
+                android:background="@drawable/viewvideo"
+                android:padding="20dp" />
         </LinearLayout>
 
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_gravity="center"
             android:orientation="horizontal">
 
             <Button
                 android:id="@+id/person"
-                android:layout_width="145dp"
-                android:layout_height="match_parent"
-                android:layout_margin="5dp"
-                android:padding="20dp"
-                android:text="등록 인물 관리" />
+                android:layout_width="80dp"
+                android:layout_height="80dp"
+                android:layout_margin="20dp"
+                android:background="@drawable/peoplesetting"
+                android:padding="20dp" />
 
             <Button
                 android:id="@+id/connect"
-                android:layout_width="145dp"
-                android:layout_height="wrap_content"
-                android:layout_margin="5dp"
-                android:padding="20dp"
-                android:text="긴급 연락망 관리" />
+                android:layout_width="80dp"
+                android:layout_height="80dp"
+                android:layout_margin="20dp"
+                android:background="@drawable/numbersetting"
+                android:padding="20dp" />
         </LinearLayout>
 
         <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
             android:orientation="horizontal">
 
             <Button
                 android:id="@+id/visitor"
-                android:layout_width="145dp"
-                android:layout_height="wrap_content"
-                android:layout_margin="5dp"
-                android:padding="20dp"
-                android:text="방문자 사진 관리" />
+                android:layout_width="80dp"
+                android:layout_height="80dp"
+                android:layout_margin="20dp"
+                android:background="@drawable/visitorsetting"
+                android:padding="20dp" />
 
             <Button
                 android:id="@+id/emerText_change"
-                android:layout_width="145dp"
-                android:layout_height="wrap_content"
-                android:layout_margin="5dp"
-                android:padding="20dp"
-                android:text="긴급 메세지 수정" />
+                android:layout_width="80dp"
+                android:layout_height="80dp"
+                android:layout_margin="20dp"
+                android:background="@drawable/messeage"
+                android:padding="20dp" />
         </LinearLayout>
 
         <Button
             android:id="@+id/Emergency"
-            android:layout_width="130dp"
-            android:layout_height="115dp"
-            android:background="@drawable/circle_border"
-            android:text="도움 요청 버튼"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
             android:layout_gravity="center"
-            android:textColor="@android:color/white" />
+            android:layout_margin="10dp"
+            android:background="@drawable/sos" />
 
         <LinearLayout
 
@@ -101,6 +101,7 @@
             android:layout_height="wrap_content"
             android:layout_alignParentBottom="true"
             android:layout_centerHorizontal="true"
+            android:layout_gravity="center"
             tools:layout_editor_absoluteX="51dp"
             tools:layout_editor_absoluteY="533dp">
 
@@ -120,7 +121,6 @@
                 android:padding="20dp"
                 android:text="회원탈퇴" />
         </LinearLayout>
-
 
 
     </LinearLayout>
