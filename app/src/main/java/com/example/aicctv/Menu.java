@@ -24,9 +24,9 @@ import java.util.List;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-public class Menu extends AppCompatActivity implements View.OnClickListener{
+public class Menu extends AppCompatActivity {
     private FirebaseAuth mAuth ;
-    Button btnLogout, btnRevoke;
+    Button btnLogout, btnRevoke,button4;
 
     private FirebaseDatabase firebaseDatabase = FirebaseDatabase.getInstance();
     private DatabaseReference databaseReference = firebaseDatabase.getReference().child("00gpwls00");
@@ -51,6 +51,16 @@ public class Menu extends AppCompatActivity implements View.OnClickListener{
             @Override
             public void onCancelled(DatabaseError databaseError) {            }
         });
+
+
+        button4 = (Button) findViewById(R.id.button4);
+        button4.setOnClickListener(new View.OnClickListener(){
+            public void onClick(View view) {
+                Intent intent10 = new Intent(getApplicationContext(), Setting_menu.class);
+                startActivity(intent10);
+            }
+        });
+
 
         //실시간 모니터링 버튼
         Button button = (Button) findViewById(R.id.monitoring);
@@ -137,41 +147,10 @@ public class Menu extends AppCompatActivity implements View.OnClickListener{
         });
 
         mAuth = FirebaseAuth.getInstance();
-        btnLogout = (Button)findViewById(R.id.btn_logout);
-        btnRevoke = (Button)findViewById(R.id.btn_revoke);
 
-        btnLogout.setOnClickListener(this);
-        btnRevoke.setOnClickListener(this);
+
 
     }
 
-    private void signOut() {    //로그아웃 함수
-        FirebaseAuth.getInstance().signOut();
-    }
 
-    private void revokeAccess() {   //회원탈퇴 함수
-        mAuth.getCurrentUser().delete();
-    }
-
-    @Override
-    public void onClick(View v) {
-        switch (v.getId()) {
-            case R.id.btn_logout:
-                signOut();
-                updateUI(null);
-                break;
-            case R.id.btn_revoke:
-                revokeAccess();
-                updateUI(null);
-                break;
-        }
-    }
-
-    private void updateUI(FirebaseUser user) { //update ui code here
-        if (user == null) {
-            Intent intent = new Intent(getApplicationContext(), MainActivity.class);
-            startActivity(intent);
-            finish();
-        }
-    }
 }

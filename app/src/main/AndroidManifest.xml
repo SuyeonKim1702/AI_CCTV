@@ -34,7 +34,9 @@
         <activity android:name=".Visitor_photo" />
         <activity android:name=".Video" />
         <activity android:name=".Video_each" />
+        <activity android:name=".Setting_menu" />
         <activity android:name=".MainActivity">
+
 
         </activity>
 

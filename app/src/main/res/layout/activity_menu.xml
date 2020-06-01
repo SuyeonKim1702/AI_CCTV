@@ -7,16 +7,32 @@
     tools:context=".MainActivity">
 
     <LinearLayout
-        android:layout_width="341dp"
-        android:layout_height="587dp"
-        android:layout_marginStart="100dp"
-        android:layout_marginEnd="100dp"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
         android:orientation="vertical"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.888">
+        app:layout_constraintVertical_bias="0.0">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginBottom="120dp"
+            android:orientation="vertical">
+
+            <Button
+                android:id="@+id/button4"
+                android:layout_width="35dp"
+                android:layout_height="35dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginBottom="0dp"
+                android:background="@drawable/menu"
+                tools:ignore="MissingConstraints" />
+        </LinearLayout>
 
         <LinearLayout
             android:layout_width="wrap_content"
@@ -87,14 +103,6 @@
                 android:padding="20dp" />
         </LinearLayout>
 
-        <Button
-            android:id="@+id/Emergency"
-            android:layout_width="80dp"
-            android:layout_height="80dp"
-            android:layout_gravity="center"
-            android:layout_margin="10dp"
-            android:background="@drawable/sos" />
-
         <LinearLayout
 
             android:layout_width="wrap_content"
@@ -105,46 +113,18 @@
             tools:layout_editor_absoluteX="51dp"
             tools:layout_editor_absoluteY="533dp">
 
-            <Button
-                android:id="@+id/btn_logout"
-                android:layout_width="145dp"
-                android:layout_height="wrap_content"
-                android:layout_margin="5dp"
-                android:padding="20dp"
-                android:text="로그아웃" />
 
             <Button
-                android:id="@+id/btn_revoke"
-                android:layout_width="145dp"
-                android:layout_height="wrap_content"
-                android:layout_margin="5dp"
-                android:padding="20dp"
-                android:text="회원탈퇴" />
+                android:id="@+id/Emergency"
+                android:layout_width="80dp"
+                android:layout_height="80dp"
+                android:layout_gravity="center"
+                android:layout_margin="10dp"
+                android:background="@drawable/sos" />
         </LinearLayout>
 
 
     </LinearLayout>
-
-    <Button
-        android:id="@+id/additional_learning"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="28dp"
-        android:text="얼굴 추가 학습"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.921"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <TextView
-        android:id="@+id/additional_announce"
-        android:layout_width="264dp"
-        android:layout_height="37dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="35dp"
-        android:text="추가 학습하기 위한 사진이 충분하지 않을 경우 제대로 학습되지 않을 수 있으며 이ㅏ룬아루ㅐ댜룯내ㅑㄹㄴ"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
