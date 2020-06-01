@@ -91,7 +91,7 @@ public class Contact extends AppCompatActivity {
                 //선택한 항목의 position 저장한 후 listView에 선택 설정
                 selectedPosition = position;
                 listView.setItemChecked(selectedPosition, true);
-                Toast.makeText(Contact.this, arrayList.get(selectedPosition)+"선택", Toast.LENGTH_SHORT).show();
+                Toast.makeText(Contact.this, arrayList.get(selectedPosition)+" 선택", Toast.LENGTH_SHORT).show();
             }
         });
 

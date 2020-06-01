@@ -9,23 +9,27 @@
       android:id="@+id/linearLayout1"
       android:layout_width="match_parent"
       android:layout_height="50dp"
+      android:layout_marginTop="30dp"
+      android:layout_marginBottom="20dp"
       android:orientation="horizontal">
 
       <TextView
           android:layout_width="wrap_content"
           android:layout_height="match_parent"
-          android:text="이름:"
+          android:layout_weight="1"
           android:gravity="center"
-          android:textSize="20dp"
-          android:layout_weight="1"></TextView>
+          android:text="이름:"
+          android:textSize="20dp"></TextView>
 
 
-         <EditText
-             android:id="@+id/name"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:hint="이름을 입력하세요"
-             android:layout_weight="2"/>
+      <EditText
+          android:id="@+id/name"
+          android:layout_width="wrap_content"
+          android:layout_height="match_parent"
+          android:layout_weight="2"
+          android:layout_marginRight="20dp"
+          android:layout_marginLeft="-20dp"
+          android:hint="이름을 입력하세요" />
   </LinearLayout>
 
     <Button
@@ -33,9 +37,10 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/linearLayout1"
+        android:layout_centerHorizontal="true"
         android:layout_gravity="center"
-        android:layout_marginTop="20dp"
-        android:layout_marginLeft="140dp"
+        android:layout_marginLeft="0dp"
+        android:layout_marginTop="0dp"
         android:text="사진 불러오기" />
 
     <ImageView
@@ -61,6 +66,7 @@
         android:layout_gravity="left"
         android:animateLayoutChanges="true"
         android:gravity="left"
+        android:layout_marginTop="20dp"
         android:orientation="horizontal"
         android:visibility="visible">
 
@@ -85,32 +91,32 @@
         android:layout_marginTop="15dp"
         android:layout_marginLeft="50dp"></TextView>
 
-   <LinearLayout
-       android:id="@+id/linearLayout2"
-       android:orientation="horizontal"
-       android:layout_below="@+id/hori_scroll_view"
-       android:layout_width="match_parent"
-       android:layout_height="match_parent">
+    <LinearLayout
+        android:id="@+id/linearLayout2"
+        android:layout_width="fill_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/hori_scroll_view"
+        android:gravity="center"
+        android:paddingTop="40dp"
+        android:orientation="horizontal">
 
-       <Button
-           android:id="@+id/cancel_button"
-           android:layout_width="wrap_content"
-           android:layout_height="wrap_content"
-           android:layout_gravity="center"
-           android:layout_marginTop="120dp"
-           android:layout_marginLeft="160dp"
-           android:text="취소" />
-    <Button
-        android:id="@+id/confirm_button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:layout_marginTop="120dp"
-        android:layout_marginLeft="20dp"
-        android:text="저장" />
-   </LinearLayout>
+        <Button
+            android:id="@+id/confirm_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginRight="10dp"
+            android:text="저장" />
 
+        <Button
+            android:id="@+id/cancel_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginLeft="10dp"
+            android:text="취소" />
 
+    </LinearLayout>
 
 
 </RelativeLayout>
