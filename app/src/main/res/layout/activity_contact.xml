@@ -20,18 +20,12 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"></SearchView>
 
-        <TextView
-            android:id="@+id/notice"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_margin="15dp"
-            android:text="이름, 전화번호 및 개인에 대한 정보 수집의 목적은 알나울 후ㅏ윈 분아 수ㅏㅏ두라 ㅇ누란ㅇ라니루 ㄴㅇ루ㅏㄴ이룬아룬." />
-
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/linearLayout1">
+            android:layout_below="@+id/linearLayout1"
+            android:paddingBottom="10dp">
 
             <TextView
                 android:layout_width="wrap_content"
@@ -46,6 +40,8 @@
                 android:id="@+id/numberinput"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginLeft="-30dp"
+                android:layout_marginRight="10dp"
                 android:layout_weight="2"
                 android:hint="번호를 입력하세요" />
         </LinearLayout>
@@ -59,12 +55,14 @@
                 android:id="@+id/btn_add"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginRight="10dp"
                 android:text="추가" />
 
             <Button
                 android:id="@+id/btn_del"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
                 android:text="삭제" />
 
         </LinearLayout>
