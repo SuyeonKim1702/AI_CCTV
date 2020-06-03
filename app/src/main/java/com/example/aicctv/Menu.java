@@ -2,6 +2,7 @@ package com.example.aicctv;
 
 import android.app.PendingIntent;
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.telephony.SmsManager;
 import android.view.View;
@@ -65,6 +66,10 @@ public class Menu extends AppCompatActivity {
                 for (DataSnapshot messageData : dataSnapshot.getChildren()) {
                     nickName.setText((String)messageData.child("Nickname").getValue()+"님 안녕하세요");
                     state.setText((String)messageData.child("State").getValue());
+                    if(((String)messageData.child("State").getValue()).equals("안전"))
+                        state.setTextColor(Color.parseColor("#0067a3"));
+                    else
+                        state.setTextColor(Color.parseColor("#b6181e"));
 
                     // System.out.println(messageData.getKey());
                 }
