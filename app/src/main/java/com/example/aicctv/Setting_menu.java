@@ -67,8 +67,12 @@ public class Setting_menu extends AppCompatActivity {
     Button logout_button;
     Button exit_button;
     Button goback;
+    TextView nickName, id, email;
 
     private FirebaseAuth mAuth ;
+
+    FirebaseDatabase firebaseDatabase = FirebaseDatabase.getInstance();
+    DatabaseReference childreference = firebaseDatabase.getReference();
 
 
     @Override
@@ -76,35 +80,60 @@ public class Setting_menu extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.setting_menu);
         FirebaseApp.initializeApp(this);
-
+        nickName = (TextView) findViewById(R.id.textView3);
+        id = (TextView) findViewById(R.id.textView4);
+        email = (TextView) findViewById(R.id.textView5);
         goback = (Button) findViewById(R.id.button);
         logout_button = (Button) findViewById(R.id.button2);
         exit_button = (Button) findViewById(R.id.button3);
 
         mAuth = FirebaseAuth.getInstance();
 
-        logout_button.setOnClickListener(new View.OnClickListener(){
+        logout_button.setOnClickListener(new View.OnClickListener() {
             public void onClick(View view) {
                 FirebaseAuth.getInstance().signOut();
                 updateUI(null);
             }
         });
 
-        exit_button.setOnClickListener(new View.OnClickListener(){
+        exit_button.setOnClickListener(new View.OnClickListener() {
             public void onClick(View view) {
                 mAuth.getCurrentUser().delete();
                 updateUI(null);
             }
         });
 
-        goback.setOnClickListener(new View.OnClickListener(){
+        goback.setOnClickListener(new View.OnClickListener() {
             public void onClick(View view) {
                 Intent back = new Intent(getApplicationContext(), Menu.class);
                 startActivity(back);
                 finish();
             }
         });
+
+        //db에서 가져와서 list 보여주는 코드
+        childreference.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+
+
+                for (DataSnapshot messageData : dataSnapshot.getChildren()) {
+                    nickName.setText((String)messageData.child("Nickname").getValue());
+                    email.setText((String)messageData.child("Email").getValue());
+                    id.setText((String)messageData.child("ID").getValue());
+                    // System.out.println(messageData.getKey());
+                }
+
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+            }
+        });
+
+
     }
+
 
     private void updateUI(FirebaseUser user) { //update ui code here
         if (user == null) {
@@ -121,5 +150,4 @@ public class Setting_menu extends AppCompatActivity {
 
 
 }
-
 

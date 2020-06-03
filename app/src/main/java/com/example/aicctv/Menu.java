@@ -9,6 +9,7 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
@@ -22,14 +23,16 @@ import com.google.firebase.database.ValueEventListener;
 import java.util.ArrayList;
 import java.util.List;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 public class Menu extends AppCompatActivity {
     private FirebaseAuth mAuth ;
     Button btnLogout, btnRevoke,button4;
-
+    TextView nickName,state;
     private FirebaseDatabase firebaseDatabase = FirebaseDatabase.getInstance();
     private DatabaseReference databaseReference = firebaseDatabase.getReference().child("00gpwls00");
+    private DatabaseReference databaseReference2 = firebaseDatabase.getReference();
 
     private ArrayList<String> numlist = new ArrayList<String>();
 
@@ -37,7 +40,8 @@ public class Menu extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_menu);
-
+        nickName = (TextView)findViewById(R.id.textView10);
+        state = (TextView)findViewById(R.id.textView12);
         //firebase의 database를 listview로 표현
         databaseReference.child("Contact_number").addValueEventListener(new ValueEventListener() {
             @Override
@@ -51,6 +55,28 @@ public class Menu extends AppCompatActivity {
             @Override
             public void onCancelled(DatabaseError databaseError) {            }
         });
+
+        //db에서 가져와서 list 보여주는 코드
+        databaseReference2.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+
+
+                for (DataSnapshot messageData : dataSnapshot.getChildren()) {
+                    nickName.setText((String)messageData.child("Nickname").getValue()+"님 안녕하세요");
+                    state.setText((String)messageData.child("State").getValue());
+
+                    // System.out.println(messageData.getKey());
+                }
+
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+            }
+        });
+
+
 
 
         button4 = (Button) findViewById(R.id.button4);

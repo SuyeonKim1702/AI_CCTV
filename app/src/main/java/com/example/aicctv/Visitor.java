@@ -56,9 +56,11 @@ public class Visitor extends AppCompatActivity {
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 //선택한 항목의 position 저장한 후 listView에 선택 설정
                 selectedPosition = position;
+                String selected_item = (String)parent.getItemAtPosition(position);
                 listView.setItemChecked(selectedPosition, true);
                 item = arrayList.get(selectedPosition);
                 Intent videophoto_item = new Intent(getApplicationContext(), Visitor_photo.class);
+                videophoto_item.putExtra("selected_item",selected_item);
                 startActivity(videophoto_item);
             }
         });
