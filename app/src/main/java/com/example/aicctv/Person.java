@@ -31,9 +31,16 @@ import java.util.List;
 public class Person extends AppCompatActivity {
 
     private ListView list;
-    ArrayList<String> listdata;
+    static ArrayList<String> listdata;
     ArrayAdapter<String> adapter;
     SearchView searchView;
+
+    public ArrayList<String> getList(){
+        return listdata;
+    }
+    public int getPosition(){
+        return selectedPosition;
+    }
 
     Button deleteButton;
     private int selectedPosition;
@@ -108,44 +115,6 @@ public class Person extends AppCompatActivity {
                 list.setItemChecked(selectedPosition, true);
             }
         };
-
-        //삭제 버튼 작동 코드
-        deleteButton = (Button) findViewById(R.id.deletebutton);
-        deleteButton.setOnClickListener(new Button.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                String origin=listdata.get(selectedPosition);
-                int index_=origin.indexOf(" ");
-                String split=origin.substring(0,index_);
-
-                //선택되어 있는 항목 storage에서 모든 사진 제거
-                childreference.child(split).addListenerForSingleValueEvent(new ValueEventListener() {
-                    @Override
-                    public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                        for (DataSnapshot messageData : dataSnapshot.getChildren()) {
-                            String key = messageData.getKey() + ".png";
-
-                            //String file = String.valueOf(messageData.child("name").getValue()+".png");
-                            storageRef.child(split).child(key).delete().addOnSuccessListener(new OnSuccessListener<Void>() {
-                                @Override
-                                public void onSuccess(Void aVoid) {
-                                    Toast.makeText(Person.this, "선택 인물 삭제", Toast.LENGTH_LONG).show();
-                                }
-                            });
-                        }
-                    }
-                    @Override
-                    public void onCancelled(@NonNull DatabaseError databaseError) {            }
-                });
-
-                //선택되어 있는 항목 db에서 제거
-                childreference.child(split).removeValue().addOnSuccessListener(new OnSuccessListener<Void>() {
-                    @Override
-                    public void onSuccess(Void aVoid) {                    }
-                });
-
-            }
-        });
 
         FloatingActionButton floatingActionbutton = (FloatingActionButton) findViewById(R.id.float1);
         floatingActionbutton.setOnClickListener(new View.OnClickListener() {

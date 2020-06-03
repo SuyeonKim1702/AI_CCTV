@@ -86,7 +86,7 @@ public class Visitor_photo extends AppCompatActivity{
                 for (Object element : list_) {
 
                     String element_=(String)element;
-                    storageRef = storage.getReferenceFromUrl("gs://aicctv-8f5ac.appspot.com").child("/00gpwls00/VideoPhoto/수연/"+element+".png");
+                    storageRef = storage.getReferenceFromUrl("gs://aicctv-8f5ac.appspot.com").child("/00gpwls00/VideoPhoto/"+name+"/"+element+".png");
                     storageRef.getBytes(ONE_MEGABYTE).addOnSuccessListener(new OnSuccessListener<byte[]>() {
                         @Override
                         public void onSuccess(byte[] bytes) {

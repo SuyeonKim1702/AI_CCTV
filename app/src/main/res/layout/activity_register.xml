@@ -82,7 +82,6 @@
         android:layout_marginTop="160dp"
         android:layout_marginLeft="50dp"></TextView>
 
-
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -90,14 +89,13 @@
         android:layout_below="@+id/tv1"
         android:layout_marginTop="15dp"
         android:layout_marginLeft="50dp"></TextView>
-
     <LinearLayout
-        android:id="@+id/linearLayout2"
+        android:id="@+id/linearLayout3"
         android:layout_width="fill_parent"
         android:layout_height="match_parent"
         android:layout_below="@+id/hori_scroll_view"
         android:gravity="center"
-        android:paddingTop="40dp"
+        android:paddingTop="70dp"
         android:orientation="horizontal">
 
         <Button
@@ -105,7 +103,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:layout_marginRight="10dp"
+            android:layout_marginLeft="10dp"
             android:text="저장" />
 
         <Button
@@ -116,8 +114,14 @@
             android:layout_marginLeft="10dp"
             android:text="취소" />
 
-    </LinearLayout>
-
+        <Button
+            android:id="@+id/delete_person"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginLeft="10dp"
+            android:text="인물 삭제" />
+        </LinearLayout>
 
 </RelativeLayout>
 

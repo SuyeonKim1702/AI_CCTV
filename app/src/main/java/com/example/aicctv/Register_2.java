@@ -73,13 +73,61 @@ public class Register_2 extends AppCompatActivity {
     int DownCount;
     SimpleDateFormat formatter;
     private final String SAMPLE_CROPPED_IMAGE_NAME = "sample_image";
+
+    FirebaseDatabase firebaseDatabase = FirebaseDatabase.getInstance();
+    DatabaseReference childreference = firebaseDatabase.getReference().child("00gpwls00/PhotoLink/");
+
+    FirebaseStorage storage = FirebaseStorage.getInstance();
+    StorageReference storageRef = storage.getReference().child("00gpwls00/Photo/");
+
+    Person pers = new Person();
+    private ArrayList<String> listlist = pers.getList();
+    int selectedPosition2 = pers.getPosition();
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register);
         FirebaseApp.initializeApp(this);
 
+        //인물 삭제 버튼
+        Button delete_person = findViewById(R.id.delete_person);
+        delete_person.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String origin=listlist.get(selectedPosition2);
+                int index_=origin.indexOf(" ");
+                String split=origin.substring(0,index_);
 
+                //선택되어 있는 항목 storage에서 모든 사진 제거
+                childreference.child(split).addListenerForSingleValueEvent(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                        for (DataSnapshot messageData : dataSnapshot.getChildren()) {
+                            String key = messageData.getKey() + ".png";
+
+                            //String file = String.valueOf(messageData.child("name").getValue()+".png");
+                            storageRef.child(split).child(key).delete().addOnSuccessListener(new OnSuccessListener<Void>() {
+                                @Override
+                                public void onSuccess(Void aVoid) {
+                                    Toast.makeText(Register_2.this, "선택 인물 삭제", Toast.LENGTH_LONG).show();
+                                }
+                            });
+                        }
+                    }
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError databaseError) {            }
+                });
+
+                //선택되어 있는 항목 db에서 제거
+                childreference.child(split).removeValue().addOnSuccessListener(new OnSuccessListener<Void>() {
+                    @Override
+                    public void onSuccess(Void aVoid) {                    }
+                });
+
+                finish();
+            }
+        });
 
         mStorageRef = FirebaseStorage.getInstance().getReference();
         editText_name = findViewById(R.id.name);

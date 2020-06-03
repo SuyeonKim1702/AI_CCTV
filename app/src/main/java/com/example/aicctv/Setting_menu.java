@@ -93,6 +93,7 @@ public class Setting_menu extends AppCompatActivity {
         learning.setOnClickListener(new View.OnClickListener() {
             public void onClick(View view) {
                 firebaseDatabase.getReference().child("/00gpwls00/Learning").setValue(1);
+                Toast.makeText(getApplicationContext(), "학습을 시작합니다.\n 평균 3~4시간 소요", Toast.LENGTH_SHORT).show();
             }
         });
 
