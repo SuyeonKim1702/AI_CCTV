@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.util.DisplayMetrics;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.BaseAdapter;
 import android.widget.Button;
@@ -50,6 +51,14 @@ public class Visitor_photo extends AppCompatActivity{
     DatabaseReference childreference;
     GridView videophoto_view;
 
+    private String name;
+    public String getPhotoName(){
+        return name;
+    }
+
+    private int changeORnot = 0;
+    private int pos= 0;
+
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.visitor_each);
@@ -58,13 +67,11 @@ public class Visitor_photo extends AppCompatActivity{
 
         Intent intent = getIntent(); /*데이터 수신*/
 
-        String name = intent.getExtras().getString("selected_item");/*String형*/
+        name = intent.getExtras().getString("selected_item");/*String형*/
 
         childreference = firebaseDatabase.getReference("00gpwls00/VideoPhoto/"+name);
 
         FirebaseStorage storage = FirebaseStorage.getInstance();
-
-
 
         childreference.addValueEventListener(new ValueEventListener() {
             @Override
@@ -74,7 +81,6 @@ public class Visitor_photo extends AppCompatActivity{
                 for (DataSnapshot messageData : dataSnapshot.getChildren()) {
                     String message = messageData.getKey();
                     list_.add(message);
-                    System.out.println(message);
                 }
 
                 for (Object element : list_) {
@@ -88,7 +94,6 @@ public class Visitor_photo extends AppCompatActivity{
                             bitmap = BitmapFactory.decodeByteArray(bytes, 0, bytes.length);
 
                             images.add(bitmap);
-                            System.out.println(bitmap + "입니다");
                             //  if(i==list_.size()-1)
                             videophoto_view.setAdapter(new ImageAdapter(getApplicationContext()));
                             //i++;
@@ -100,16 +105,21 @@ public class Visitor_photo extends AppCompatActivity{
                         }
                     });
                 }
-
             }
-
             @Override
             public void onCancelled(@NonNull DatabaseError databaseError) {
             }
         });
         videophoto_view = (GridView) findViewById(R.id.video_photo_each);
-        //mMetrics = new DisplayMetrics();
-        //getWindowManager().getDefaultDisplay().getMetrics(mMetrics);
+        mMetrics = getResources().getDisplayMetrics();
+        videophoto_view.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            //리스트 뷰의 항목이선택되면 여기서 처리.
+            @Override  //컨트롤
+            public void onItemClick(AdapterView<?> parent, View view, int position,long id) {
+                PopupClick(view);
+                pos = position;
+            }//onItemClick
+        });
     }
 
     public class ImageAdapter extends BaseAdapter{
@@ -128,16 +138,33 @@ public class Visitor_photo extends AppCompatActivity{
             return position;
         }
         public View getView(int position, View convertView, ViewGroup parent){
+            int rowWidth = (mMetrics.widthPixels) / 3;
 
             ImageView imageView = new ImageView(mContext);
             imageView.setImageBitmap(images.get(position));
-            System.out.println("gggg");
             imageView.setScaleType(ImageView.ScaleType.CENTER_CROP);
-            imageView.setLayoutParams(new GridView.LayoutParams(70, 70));
+            imageView.setLayoutParams(new GridView.LayoutParams(rowWidth, rowWidth));
             return imageView;
+        }
+    }
 
+    public void PopupClick(View v){
+        Intent intent = new Intent(this,Visitor_popup.class);
+        intent.putExtra("data", name);
+        startActivityForResult(intent, 1);
+    }
 
-
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode == 1) {
+            if (resultCode == RESULT_OK) {
+                //데이터 받기
+                changeORnot = data.getIntExtra("result", 0);
+                if(changeORnot == 1){
+                    images.remove(pos);
+                    videophoto_view.setAdapter(new ImageAdapter(getApplicationContext()));
+                }
+            }
         }
     }
 }

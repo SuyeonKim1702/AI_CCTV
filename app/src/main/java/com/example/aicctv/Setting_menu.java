@@ -64,9 +64,7 @@ import io.reactivex.disposables.Disposable;
 
 public class Setting_menu extends AppCompatActivity {
 
-    Button logout_button;
-    Button exit_button;
-    Button goback;
+    Button logout_button,exit_button,goback,learning;
     TextView nickName, id, email;
 
     private FirebaseAuth mAuth ;
@@ -86,8 +84,18 @@ public class Setting_menu extends AppCompatActivity {
         goback = (Button) findViewById(R.id.button);
         logout_button = (Button) findViewById(R.id.button2);
         exit_button = (Button) findViewById(R.id.button3);
+        learning = (Button) findViewById(R.id.button6);
+
 
         mAuth = FirebaseAuth.getInstance();
+
+
+        learning.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View view) {
+                firebaseDatabase.getReference().child("/00gpwls00/Learning").setValue(1);
+            }
+        });
+
 
         logout_button.setOnClickListener(new View.OnClickListener() {
             public void onClick(View view) {

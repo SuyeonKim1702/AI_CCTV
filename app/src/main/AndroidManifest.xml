@@ -35,10 +35,9 @@
         <activity android:name=".Video" />
         <activity android:name=".Video_each" />
         <activity android:name=".Setting_menu" />
-        <activity android:name=".MainActivity">
+        <activity android:name=".MainActivity" />
+        <activity android:name=".Visitor_popup" android:theme="@android:style/Theme.Dialog"/>
 
-
-        </activity>
 
         <activity android:name=".LoadingActivity">
             android:theme="@style/AppTheme" />
